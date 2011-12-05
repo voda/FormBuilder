@@ -71,7 +71,7 @@ class Builder {
 			return new Mappers\IdMapper();
 		});
 		$this->mapperContainer->addService('boolean', function() {
-			return new Mappers\IdMapper();
+			return new Mappers\BooleanMapper();
 		});
 	}
 
