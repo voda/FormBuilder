@@ -41,7 +41,7 @@ class AnnotationLoader implements ILoader {
 	 */
 	public function load($class) {
 		$meta = array();
-		$ref = new \Nette\Reflection\ClassType($class);
+		$ref = new \Nette\Reflection\ClassReflection($class);
 		do {
 			foreach ($ref->getProperties() as $property) {
 				$m = $this->processProperty($property);
@@ -55,10 +55,10 @@ class AnnotationLoader implements ILoader {
 	}
 
 	/**
-	 * @param \Nette\Reflection\Property
+	 * @param \Nette\Reflection\PropertyReflection
 	 * @return Metadata|null
 	 */
-	private function processProperty(\Nette\Reflection\Property $property) {
+	private function processProperty(\Nette\Reflection\PropertyReflection $property) {
 		if (!$property->hasAnnotation('Input')) {
 			return;
 		}

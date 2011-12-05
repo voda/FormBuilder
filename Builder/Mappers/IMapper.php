@@ -51,8 +51,8 @@ interface IMapper {
 	public function formatForForm($value);
 
 	/**
-	 * @param \Nette\Forms\Controls\BaseControl $control
+	 * @param \Nette\Forms\FormControl $control
 	 * @return mixed
 	 */
-	public function formatForEntity(\Nette\Forms\Controls\BaseControl $control);
+	public function formatForEntity(\Nette\Forms\FormControl $control);
 }

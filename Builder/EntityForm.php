@@ -33,7 +33,7 @@ namespace Vodacek\Form\Builder;
  * @copyright 2011, Ondřej Vodáček
  * @license New BSD License
  */
-class EntityForm extends \Nette\Application\UI\Form {
+class EntityForm extends \Nette\Application\AppForm {
 
 	/** @var Builder */
 	private $builder;
@@ -65,7 +65,7 @@ class EntityForm extends \Nette\Application\UI\Form {
 	 */
 	protected function attached($presenter) {
 		parent::attached($presenter);
-		if ($presenter instanceof \Nette\Application\UI\Presenter) {
+		if ($presenter instanceof \Nette\Application\Presenter) {
 			$this->builder->setDefaults($this);
 		}
 	}
@@ -78,7 +78,7 @@ class EntityForm extends \Nette\Application\UI\Form {
 	 * @throws MemberAccessException
 	 */
 	public function __call($name, $args) {
-		if ($name === 'onSuccess') {
+		if ($name === 'onSubmit') {
 			$args = array($this->builder->formatForEntity($args[0]), $args[0]);
 		}
 		return parent::__call($name, $args);

@@ -49,10 +49,10 @@ class DefaultMapper implements IMapper {
 	}
 
 	/**
-	 * @param \Nette\Forms\Controls\BaseControl $input
+	 * @param \Nette\Forms\FormControl $input
 	 * @param array $conditions
 	 */
-	protected function addConditions(\Nette\Forms\Controls\BaseControl $input, array $conditions) {
+	protected function addConditions(\Nette\Forms\FormControl $input, array $conditions) {
 		foreach ($conditions as $key => $value) {
 			switch ($key) {
 				case 'required':
@@ -85,10 +85,10 @@ class DefaultMapper implements IMapper {
 	}
 
 	/**
-	 * @param \Nette\Forms\Controls\BaseControl $control
+	 * @param \Nette\Forms\FormControl $control
 	 * @return mixed
 	 */
-	public function formatForEntity(\Nette\Forms\Controls\BaseControl $control) {
+	public function formatForEntity(\Nette\Forms\FormControl $control) {
 		return $control->getValue() ?: null;
 	}
 }

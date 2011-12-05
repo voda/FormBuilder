@@ -35,7 +35,7 @@ namespace Vodacek\Form\Builder;
  */
 class Builder {
 
-	/** @var \Nette\DI\Container */
+	/** @var \Nette\ServiceLocator */
 	private $mapperContainer;
 
 	/** @var array */
@@ -57,22 +57,12 @@ class Builder {
 	public function __construct(Loaders\ILoader $loader) {
 		$this->entities = new \SplObjectStorage();
 		$this->loader = $loader;
-		$this->mapperContainer = new \Nette\DI\Container();
-		$this->mapperContainer->addService('string', function() {
-			return new Mappers\StringMapper();
-		});
-		$this->mapperContainer->addService('number', function() {
-			return new Mappers\NumberMapper();
-		});
-		$this->mapperContainer->addService('date', function() {
-			return new Mappers\DateMapper();
-		});
-		$this->mapperContainer->addService('id', function() {
-			return new Mappers\IdMapper();
-		});
-		$this->mapperContainer->addService('boolean', function() {
-			return new Mappers\BooleanMapper();
-		});
+		$this->mapperContainer = new \Nette\ServiceLocator();
+		$this->mapperContainer->addService('string', new Mappers\StringMapper());
+		$this->mapperContainer->addService('number', new Mappers\NumberMapper());
+		$this->mapperContainer->addService('date', new Mappers\DateMapper());
+		$this->mapperContainer->addService('id', new Mappers\IdMapper());
+		$this->mapperContainer->addService('boolean', new Mappers\BooleanMapper());
 	}
 
 	public function build($entity) {
@@ -181,7 +171,7 @@ class Builder {
 
 	/**
 	 * @param string $name
-	 * @param IMapper|callback $mapper
+	 * @param IMapper $mapper
 	 */
 	public function addMapper($name, $mapper) {
 		$this->mapperContainer->addService($name, $mapper);
