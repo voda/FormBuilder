@@ -86,6 +86,16 @@ class Builder {
 	}
 
 	/**
+	 * @param EntityForm $form
+	 */
+	public function setDefaults(EntityForm $form) {
+		$entity = $this->entities[$form];
+		if (is_object($entity)) {
+			$form->setDefaults($entity);
+		}
+	}
+
+	/**
 	 * @param object $values
 	 * @return array
 	 */

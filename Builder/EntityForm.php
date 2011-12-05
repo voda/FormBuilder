@@ -58,6 +58,19 @@ class EntityForm extends \Nette\Application\UI\Form {
 	}
 
 	/**
+	 * This method will be called when the component (or component's parent)
+	 * becomes attached to a monitored object. Do not call this method yourself.
+	 * @param  Nette\ComponentModel\IComponent
+	 * @return void
+	 */
+	protected function attached($presenter) {
+		parent::attached($presenter);
+		if ($presenter instanceof \Nette\Application\UI\Presenter) {
+			$this->builder->setDefaults($this);
+		}
+	}
+
+	/**
 	 * Call to undefined method.
 	 * @param  string  method name
 	 * @param  array   arguments
