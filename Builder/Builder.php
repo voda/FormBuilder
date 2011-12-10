@@ -124,7 +124,7 @@ class Builder {
 	 * @param EntityForm $form
 	 * @return object
 	 */
-	public function formatForEntity(EntityForm $form) {
+	public function buildEntity(EntityForm $form) {
 		$entity = $this->entities[$form];
 		$class = null;
 		if (is_object($entity)) {

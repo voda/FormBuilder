@@ -79,7 +79,7 @@ class EntityForm extends \Nette\Application\UI\Form {
 	 */
 	public function __call($name, $args) {
 		if ($name === 'onSuccess') {
-			$args = array($this->builder->formatForEntity($args[0]), $args[0]);
+			$args = array($this->builder->buildEntity($args[0]), $args[0]);
 		}
 		return parent::__call($name, $args);
 	}
