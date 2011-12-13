@@ -78,17 +78,19 @@ class DefaultMapper implements IMapper {
 
 	/**
 	 * @param mixed $value
+	 * @param Builder\Metadata $metadata
 	 * @return mixed
 	 */
-	public function formatForForm($value) {
+	public function toControlValue($value, Builder\Metadata $metadata) {
 		return $value;
 	}
 
 	/**
 	 * @param \Nette\Forms\Controls\BaseControl $control
+	 * @param Builder\Metadata $metadata
 	 * @return mixed
 	 */
-	public function formatForEntity(\Nette\Forms\Controls\BaseControl $control) {
+	public function toPropertyValue(\Nette\Forms\Controls\BaseControl $control, Builder\Metadata $metadata) {
 		return $control->getValue() ?: null;
 	}
 }

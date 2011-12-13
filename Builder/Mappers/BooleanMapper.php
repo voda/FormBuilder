@@ -50,9 +50,10 @@ class BooleanMapper extends DefaultMapper {
 
 	/**
 	 * @param \Nette\Forms\Controls\BaseControl $control
+	 * @param Builder\Metadata $metadata
 	 * @return mixed
 	 */
-	public function formatForEntity(\Nette\Forms\Controls\BaseControl $control) {
+	public function toPropertyValue(\Nette\Forms\Controls\BaseControl $control, Builder\Metadata $metadata) {
 		return $control->getValue();
 	}
 }
