@@ -97,14 +97,14 @@ class Builder {
 			foreach ($values as $name => $value) {
 				if (isset($metadata[$name])) {
 					$meta = $metadata[$name];
-					$value = $this->getMapper($meta)->formatForForm($value);
+					$value = $this->getMapper($meta)->toControlValue($value, $meta);
 				}
 				$formated[$name] = $value;
 			}
 		} else {
 			foreach ($metadata as $meta) {
 				$getter = $meta->getter;
-				$formated[$meta->name] = $this->getMapper($meta)->formatForForm($values->$getter());
+				$formated[$meta->name] = $this->getMapper($meta)->toControlValue($values->$getter(), $meta);
 			}
 		}
 		return $formated;
@@ -114,7 +114,7 @@ class Builder {
 	 * @param EntityForm $form
 	 * @return object
 	 */
-	public function formatForEntity(EntityForm $form) {
+	public function buildEntity(EntityForm $form) {
 		$entity = $this->entities[$form];
 		$class = null;
 		if (is_object($entity)) {
@@ -126,7 +126,7 @@ class Builder {
 		$metadata = $this->loader->load($class);
 		$values = array();
 		foreach ($metadata as $name => $meta) {
-			$values[$name] = $this->getMapper($meta)->formatForEntity($form[$name]);
+			$values[$name] = $this->getMapper($meta)->toPropertyValue($form[$name], $meta);
 		}
 
 		if (!$entity) {

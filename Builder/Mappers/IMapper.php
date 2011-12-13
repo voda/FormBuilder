@@ -46,13 +46,15 @@ interface IMapper {
 
 	/**
 	 * @param mixed $value
+	 * @param Builder\Metadata $metadata
 	 * @return mixed
 	 */
-	public function formatForForm($value);
+	public function toControlValue($value, Builder\Metadata $metadata);
 
 	/**
 	 * @param \Nette\Forms\FormControl $control
+	 * @param Builder\Metadata $metadata
 	 * @return mixed
 	 */
-	public function formatForEntity(\Nette\Forms\FormControl $control);
+	public function toPropertyValue(\Nette\Forms\FormControl $control, Builder\Metadata $meta);
 }
