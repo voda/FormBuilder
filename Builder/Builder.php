@@ -138,6 +138,9 @@ class Builder {
 		foreach ($metadata as $name => $meta) {
 			$values[$name] = $this->getMapper($meta)->toPropertyValue($form[$name], $meta);
 		}
+		if ($form->hasErrors()) {
+			return null;
+		}
 
 		if (!$entity) {
 			$ref = new \ReflectionClass($class);
