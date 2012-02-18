@@ -61,4 +61,26 @@ class NumberMapper extends DefaultMapper {
 		$this->addConditions($input, $meta->conditions);
 		return $input;
 	}
+
+	/**
+	 * @param mixed $value
+	 * @param Builder\Metadata $metadata
+	 * @return mixed
+	 */
+	public function toControlValue($value, Builder\Metadata $metadata) {
+		return strtr($value, ',', '.');
+	}
+
+	/**
+	 * @param \Nette\Forms\Controls\BaseControl $control
+	 * @param Builder\Metadata $metadata
+	 * @return mixed
+	 */
+	public function toPropertyValue(\Nette\Forms\Controls\BaseControl $control, Builder\Metadata $metadata) {
+		$value = $control->getValue();
+		if ($value !== null) {
+			$value = $metadata->type === 'float' ? (float)$value : (int)$value;
+		}
+		return $value;
+	}
 }
