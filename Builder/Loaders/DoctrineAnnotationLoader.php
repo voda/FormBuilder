@@ -87,6 +87,10 @@ class DoctrineAnnotationLoader extends AnnotationLoader {
 			if (isset($map['length']) && $map['length'] && !isset($meta->conditions['maxLenght'])) {
 				$meta->conditions['maxLength'] = $map['length'];
 			}
+			if ($type === 'decimal' && isset($map['scale'])) {
+				$type = 'float';
+				$meta->custom['step'] = strtr(pow(10, -$map['scale']), ',E', '.e');
+			}
 		} elseif (isset($cm->associationMappings[$meta->name])) {
 			$map = $cm->getAssociationMapping($meta->name);
 			$type = $map['targetEntity'];
