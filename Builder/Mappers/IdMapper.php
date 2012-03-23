@@ -38,11 +38,11 @@ use Vodacek\Form\Builder;
 class IdMapper extends DefaultMapper {
 
 	/**
-	 * @param Builder\EntityForm $form
+	 * @param \Nette\Forms\Form $form
 	 * @param Builder\Metadata $meta
 	 * @return \Nette\Forms\Controls\BaseControl
 	 */
-	public function addFormControl(Builder\EntityForm $form, Builder\Metadata $meta) {
+	public function addFormControl(\Nette\Forms\Form $form, Builder\Metadata $meta) {
 		return $form->addHidden($meta->name);
 	}
 }

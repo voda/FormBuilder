@@ -38,11 +38,11 @@ use Vodacek\Form\Builder;
 interface IMapper {
 
 	/**
-	 * @param Builder\EntityForm $form
+	 * @param \Nette\Forms\Form $form
 	 * @param Builder\Metadata $metadata
 	 * @return \Nette\Forms\Controls\BaseControl
 	 */
-	public function addFormControl(Builder\EntityForm $form, Builder\Metadata $metadata);
+	public function addFormControl(\Nette\Forms\Form $form, Builder\Metadata $metadata);
 
 	/**
 	 * @param mixed $value

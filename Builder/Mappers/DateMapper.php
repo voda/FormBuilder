@@ -38,11 +38,11 @@ use Vodacek\Form\Builder;
 class DateMapper extends DefaultMapper {
 
 	/**
-	 * @param Builder\EntityForm $form
+	 * @param \Nette\Forms\Form $form
 	 * @param Builder\Metadata $meta
 	 * @return \Nette\Forms\Controls\BaseControl
 	 */
-	public function addFormControl(Builder\EntityForm $form, Builder\Metadata $meta) {
+	public function addFormControl(\Nette\Forms\Form $form, Builder\Metadata $meta) {
 		$input = new \Vodacek\Forms\Controls\DateInput($meta->label, $meta->type);
 		$form->addComponent($input, $meta->name);
 		$this->addConditions($input, $meta->conditions);

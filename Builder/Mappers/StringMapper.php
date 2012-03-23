@@ -38,11 +38,11 @@ use Vodacek\Form\Builder;
 class StringMapper extends DefaultMapper {
 
 	/**
-	 * @param Builder\EntityForm $form
+	 * @param \Nette\Forms\Form $form
 	 * @param Builder\Metadata $meta
 	 * @return \Nette\Forms\Controls\BaseControl
 	 */
-	public function addFormControl(Builder\EntityForm $form, Builder\Metadata $meta) {
+	public function addFormControl(\Nette\Forms\Form $form, Builder\Metadata $meta) {
 		$method = $meta->type === 'text' ? 'addTextArea' : 'addText';
 		$input = $form->$method($meta->name, $meta->label);
 		$this->addConditions($input, $meta->conditions);

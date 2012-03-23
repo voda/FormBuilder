@@ -38,11 +38,11 @@ use Vodacek\Form\Builder;
 abstract class SelectboxMapper extends DefaultMapper {
 
 	/**
-	 * @param Builder\EntityForm $form
+	 * @param \Nette\Forms\Form $form
 	 * @param Builder\Metadata $meta
 	 * @return \Nette\Forms\Controls\BaseControl
 	 */
-	public function addFormControl(Builder\EntityForm $form, Builder\Metadata $meta) {
+	public function addFormControl(\Nette\Forms\Form $form, Builder\Metadata $meta) {
 		$input = $form->addSelect($meta->name, $meta->label, $this->getValues());
 		$this->addConditions($input, $meta->conditions);
 		return $input;

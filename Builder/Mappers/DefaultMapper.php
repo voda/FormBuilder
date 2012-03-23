@@ -38,11 +38,11 @@ use Vodacek\Form\Builder;
 class DefaultMapper implements IMapper {
 
 	/**
-	 * @param Builder\EntityForm $form
+	 * @param \Nette\Forms\Form $form
 	 * @param Builder\Metadata $meta
 	 * @return \Nette\Forms\Controls\BaseControl
 	 */
-	public function addFormControl(Builder\EntityForm $form, Builder\Metadata $meta) {
+	public function addFormControl(\Nette\Forms\Form $form, Builder\Metadata $meta) {
 		$input = $form->addText($meta->name, $meta->label);
 		$this->addConditions($input, $meta->conditions);
 		return $input;
