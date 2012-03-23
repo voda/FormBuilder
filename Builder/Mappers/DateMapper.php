@@ -43,7 +43,8 @@ class DateMapper extends DefaultMapper {
 	 * @return \Nette\Forms\Controls\BaseControl
 	 */
 	public function addFormControl(Builder\EntityForm $form, Builder\Metadata $meta) {
-		$input = $form->addDate($meta->name, $meta->label, $meta->type);
+		$input = new \Vodacek\Forms\Controls\DateInput($meta->label, $meta->type);
+		$form->addComponent($input, $meta->name);
 		$this->addConditions($input, $meta->conditions);
 		return $input;
 	}
