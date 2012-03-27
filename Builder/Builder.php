@@ -58,21 +58,7 @@ class Builder {
 		$this->entities = new \SplObjectStorage();
 		$this->loader = $loader;
 		$this->mapperContainer = new \Nette\DI\Container();
-		$this->mapperContainer->addService('string', function() {
-			return new Mappers\StringMapper();
-		});
-		$this->mapperContainer->addService('number', function() {
-			return new Mappers\NumberMapper();
-		});
-		$this->mapperContainer->addService('date', function() {
-			return new Mappers\DateMapper();
-		});
-		$this->mapperContainer->addService('id', function() {
-			return new Mappers\IdMapper();
-		});
-		$this->mapperContainer->addService('boolean', function() {
-			return new Mappers\BooleanMapper();
-		});
+		$this->addDefaultMappers();
 	}
 
 	public function build($entity) {
@@ -163,6 +149,29 @@ class Builder {
 		}
 
 		return $entity;
+	}
+
+	/*** Mappers handling *****************************************************/
+
+	/**
+	 * Add mappers for default types.
+	 */
+	protected function addDefaultMappers() {
+		$this->mapperContainer->addService('string', function() {
+			return new Mappers\StringMapper();
+		});
+		$this->mapperContainer->addService('number', function() {
+			return new Mappers\NumberMapper();
+		});
+		$this->mapperContainer->addService('date', function() {
+			return new Mappers\DateMapper();
+		});
+		$this->mapperContainer->addService('id', function() {
+			return new Mappers\IdMapper();
+		});
+		$this->mapperContainer->addService('boolean', function() {
+			return new Mappers\BooleanMapper();
+		});
 	}
 
 	/**
