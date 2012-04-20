@@ -56,7 +56,7 @@ class AnnotationLoader implements ILoader {
 
 	/**
 	 * @param \Nette\Reflection\Property
-	 * @return Metadata|null
+	 * @return Builder\Metadata|null
 	 */
 	private function processProperty(\Nette\Reflection\Property $property) {
 		if (!$property->hasAnnotation('Input')) {
@@ -96,5 +96,4 @@ class AnnotationLoader implements ILoader {
 		}
 		return $meta;
 	}
-
 }

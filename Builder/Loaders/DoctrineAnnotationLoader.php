@@ -63,11 +63,10 @@ class DoctrineAnnotationLoader extends AnnotationLoader {
 	/**
 	 * @param Builder\Metadata $meta
 	 * @param \Doctrine\ORM\Mapping\ClassMetadata $cm
-	 * @return Metadata|null
 	 */
 	private function loadMeta(Builder\Metadata $meta, \Doctrine\ORM\Mapping\ClassMetadata $cm) {
 		$type = null;
-		if (isset($cm->fieldMappings[$meta->name])) {
+		if ($cm->hasField($meta->name)) {
 			$map = $cm->getFieldMapping($meta->name);
 			$type = $map['type'];
 			switch ($type) {
@@ -89,9 +88,9 @@ class DoctrineAnnotationLoader extends AnnotationLoader {
 			}
 			if ($type === 'decimal' && isset($map['scale'])) {
 				$type = 'float';
-				$meta->custom['step'] = strtr(pow(10, -$map['scale']), ',E', '.e');
+				$meta->custom['step'] = pow(10, -$map['scale']);
 			}
-		} elseif (isset($cm->associationMappings[$meta->name])) {
+		} elseif ($cm->hasAssociation($meta->name)) {
 			$map = $cm->getAssociationMapping($meta->name);
 			$type = $map['targetEntity'];
 		}
