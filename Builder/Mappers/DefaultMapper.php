@@ -91,6 +91,6 @@ class DefaultMapper implements IMapper {
 	 * @return mixed
 	 */
 	public function toPropertyValue(\Nette\Forms\Controls\BaseControl $control, Builder\Metadata $metadata) {
-		return $control->getValue() ?: null;
+		return $control->getValue() == '' ? null : $control->getValue();
 	}
 }
