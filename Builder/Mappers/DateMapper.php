@@ -31,17 +31,15 @@ namespace Vodacek\Form\Builder\Mappers;
 use Vodacek\Form\Builder;
 
 /**
+ * Mapper for date/time values.
+ *
  * @author Ondřej Vodáček <ondrej.vodacek@gmail.com>
  * @copyright 2011, Ondřej Vodáček
  * @license New BSD License
+ * @see https://github.com/voda/DateInput
  */
 class DateMapper extends DefaultMapper {
 
-	/**
-	 * @param \Nette\Forms\Form $form
-	 * @param Builder\Metadata $meta
-	 * @return \Nette\Forms\Controls\BaseControl
-	 */
 	public function addFormControl(\Nette\Forms\Form $form, Builder\Metadata $meta) {
 		$input = new \Vodacek\Forms\Controls\DateInput($meta->label, $meta->type);
 		$form->addComponent($input, $meta->name);

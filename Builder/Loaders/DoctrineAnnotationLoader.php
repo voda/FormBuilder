@@ -31,6 +31,8 @@ namespace Vodacek\Form\Builder\Loaders;
 use Vodacek\Form\Builder;
 
 /**
+ * Loader using metadata from Doctrine merged with @Input annotations.
+ *
  * @author Ondřej Vodáček <ondrej.vodacek@gmail.com>
  * @copyright 2011, Ondřej Vodáček
  * @license New BSD License
@@ -47,10 +49,6 @@ class DoctrineAnnotationLoader extends AnnotationLoader {
 		$this->em = $em;
 	}
 
-	/**
-	 * @param string $class
-	 * @return array array<Builder\Metadata>
-	 */
 	public function load($class) {
 		$meta = parent::load($class);
 		$cm = $this->em->getClassMetadata($class);

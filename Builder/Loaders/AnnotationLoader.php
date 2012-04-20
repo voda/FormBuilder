@@ -31,14 +31,14 @@ namespace Vodacek\Form\Builder\Loaders;
 use Vodacek\Form\Builder;
 
 /**
+ * Loader using @Input annotations.
+ *
  * @author Ondřej Vodáček
+ * @copyright 2011, Ondřej Vodáček
+ * @license New BSD License
  */
 class AnnotationLoader implements ILoader {
 
-	/**
-	 * @param string $class
-	 * @return array array<Builder\Metadata>
-	 */
 	public function load($class) {
 		$meta = array();
 		$ref = new \Nette\Reflection\ClassType($class);

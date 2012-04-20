@@ -31,6 +31,8 @@ namespace Vodacek\Form\Builder\Loaders;
 use Vodacek\Form\Builder;
 
 /**
+ * Interface for metadata loader.
+ *
  * @author Ondřej Vodáček <ondrej.vodacek@gmail.com>
  * @copyright 2011, Ondřej Vodáček
  * @license New BSD License
@@ -38,8 +40,10 @@ use Vodacek\Form\Builder;
 interface ILoader {
 
 	/**
+	 * Loads and return metadata for given entity.
+	 *
 	 * @param string $class
-	 * @return array array<Builder\Metadata>
+	 * @return Builder\Metadata[]
 	 */
 	public function load($class);
 }

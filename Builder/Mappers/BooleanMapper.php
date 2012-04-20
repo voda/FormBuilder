@@ -31,28 +31,20 @@ namespace Vodacek\Form\Builder\Mappers;
 use Vodacek\Form\Builder;
 
 /**
+ * Mapper for boolean values. Adds a chechkbox to the form.
+ *
  * @author Ondřej Vodáček <ondrej.vodacek@gmail.com>
  * @copyright 2011, Ondřej Vodáček
  * @license New BSD License
  */
 class BooleanMapper extends DefaultMapper {
 
-	/**
-	 * @param \Nette\Forms\Form $form
-	 * @param Builder\Metadata $meta
-	 * @return \Nette\Forms\Controls\BaseControl
-	 */
 	public function addFormControl(\Nette\Forms\Form $form, Builder\Metadata $meta) {
 		$input = $form->addCheckbox($meta->name, $meta->label);
 		$this->addConditions($input, $meta->conditions);
 		return $input;
 	}
 
-	/**
-	 * @param \Nette\Forms\Controls\BaseControl $control
-	 * @param Builder\Metadata $metadata
-	 * @return mixed
-	 */
 	public function toPropertyValue(\Nette\Forms\Controls\BaseControl $control, Builder\Metadata $metadata) {
 		return $control->getValue();
 	}

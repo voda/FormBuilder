@@ -31,17 +31,14 @@ namespace Vodacek\Form\Builder\Mappers;
 use Vodacek\Form\Builder;
 
 /**
+ * Default mapper, adds a text input and sets conditions to the control.
+ *
  * @author Ondřej Vodáček <ondrej.vodacek@gmail.com>
  * @copyright 2011, Ondřej Vodáček
  * @license New BSD License
  */
 class DefaultMapper implements IMapper {
 
-	/**
-	 * @param \Nette\Forms\Form $form
-	 * @param Builder\Metadata $meta
-	 * @return \Nette\Forms\Controls\BaseControl
-	 */
 	public function addFormControl(\Nette\Forms\Form $form, Builder\Metadata $meta) {
 		$input = $form->addText($meta->name, $meta->label);
 		$this->addConditions($input, $meta->conditions);
@@ -49,6 +46,9 @@ class DefaultMapper implements IMapper {
 	}
 
 	/**
+	 * Add default conditions.
+	 * Supports: required, min/maxLength, min, max
+	 *
 	 * @param \Nette\Forms\Controls\BaseControl $input
 	 * @param array $conditions
 	 */
@@ -76,20 +76,10 @@ class DefaultMapper implements IMapper {
 		}
 	}
 
-	/**
-	 * @param mixed $value
-	 * @param Builder\Metadata $metadata
-	 * @return mixed
-	 */
 	public function toControlValue($value, Builder\Metadata $metadata) {
 		return $value;
 	}
 
-	/**
-	 * @param \Nette\Forms\Controls\BaseControl $control
-	 * @param Builder\Metadata $metadata
-	 * @return mixed
-	 */
 	public function toPropertyValue(\Nette\Forms\Controls\BaseControl $control, Builder\Metadata $metadata) {
 		return $control->getValue() == '' ? null : $control->getValue();
 	}

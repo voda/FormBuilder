@@ -31,6 +31,8 @@ namespace Vodacek\Form\Builder\Mappers;
 use Vodacek\Form\Builder;
 
 /**
+ * Interface for Mapper objects.
+ *
  * @author Ondřej Vodáček <ondrej.vodacek@gmail.com>
  * @copyright 2011, Ondřej Vodáček
  * @license New BSD License
@@ -38,6 +40,8 @@ use Vodacek\Form\Builder;
 interface IMapper {
 
 	/**
+	 * Add a control to the form and setup it according to supplied metadata.
+	 *
 	 * @param \Nette\Forms\Form $form
 	 * @param Builder\Metadata $metadata
 	 * @return \Nette\Forms\Controls\BaseControl
@@ -45,6 +49,8 @@ interface IMapper {
 	public function addFormControl(\Nette\Forms\Form $form, Builder\Metadata $metadata);
 
 	/**
+	 * Format the value from entity to be used in control.
+	 *
 	 * @param mixed $value
 	 * @param Builder\Metadata $metadata
 	 * @return mixed
@@ -52,6 +58,8 @@ interface IMapper {
 	public function toControlValue($value, Builder\Metadata $metadata);
 
 	/**
+	 * Format the value from control to be set to the entity.
+	 *
 	 * @param \Nette\Forms\Controls\BaseControl $control
 	 * @param Builder\Metadata $metadata
 	 * @return mixed

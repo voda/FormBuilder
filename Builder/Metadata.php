@@ -29,30 +29,32 @@
 namespace Vodacek\Form\Builder;
 
 /**
+ * Class representing metadata for a given entity.
+ *
  * @author Ondřej Vodáček <ondrej.vodacek@gmail.com>
  * @copyright 2011, Ondřej Vodáček
  * @license New BSD License
  */
 class Metadata {
 
-	/** @var string */
+	/** @var string name of property */
 	public $name;
 
-	/** @var string */
+	/** @var string property type */
 	public $type;
 
-	/** @var string */
+	/** @var string text of label for input field */
 	public $label;
 
-	/** @var string */
+	/** @var string getter method for entity */
 	public $getter;
 
-	/** @var string */
+	/** @var string setter method for entity */
 	public $setter;
 
-	/** @var array */
+	/** @var array list of rules (eg. min, max, ...) */
 	public $conditions = array();
 
-	/** @var array */
+	/** @var array list for custom values (data attributes, selectbox valus, ...) */
 	public $custom = array();
 }

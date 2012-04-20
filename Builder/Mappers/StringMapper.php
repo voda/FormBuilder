@@ -31,17 +31,14 @@ namespace Vodacek\Form\Builder\Mappers;
 use Vodacek\Form\Builder;
 
 /**
+ * Mapper for string values. Adds a text input or textarea to the form.
+ *
  * @author Ondřej Vodáček <ondrej.vodacek@gmail.com>
  * @copyright 2011, Ondřej Vodáček
  * @license New BSD License
  */
 class StringMapper extends DefaultMapper {
 
-	/**
-	 * @param \Nette\Forms\Form $form
-	 * @param Builder\Metadata $meta
-	 * @return \Nette\Forms\Controls\BaseControl
-	 */
 	public function addFormControl(\Nette\Forms\Form $form, Builder\Metadata $meta) {
 		$method = $meta->type === 'text' ? 'addTextArea' : 'addText';
 		$input = $form->$method($meta->name, $meta->label);

@@ -29,6 +29,8 @@
 namespace Vodacek\Form\Builder;
 
 /**
+ * Extended Nette Form with automated entity - form values conversion.
+ *
  * @author Ondřej Vodáček <ondrej.vodacek@gmail.com>
  * @copyright 2011, Ondřej Vodáček
  * @license New BSD License
@@ -48,21 +50,16 @@ class EntityForm extends \Nette\Application\UI\Form {
 
 	/**
 	 * Fill-in with default values.
+	 *
 	 * @param  array|Traversable|object $values
 	 * @param  bool $erase erase other default values?
-	 * @return EntityForm provides a fluent interface
+	 * @return self provides a fluent interface
 	 */
 	public function setDefaults($values, $erase = FALSE) {
 		$values = $this->builder->formatForFrom($this, $values);
 		return parent::setDefaults($values, $erase);
 	}
 
-	/**
-	 * This method will be called when the component (or component's parent)
-	 * becomes attached to a monitored object. Do not call this method yourself.
-	 * @param  Nette\ComponentModel\IComponent
-	 * @return void
-	 */
 	protected function attached($presenter) {
 		parent::attached($presenter);
 		if ($presenter instanceof \Nette\Application\UI\Presenter) {
@@ -70,13 +67,6 @@ class EntityForm extends \Nette\Application\UI\Form {
 		}
 	}
 
-	/**
-	 * Call to undefined method.
-	 * @param  string  method name
-	 * @param  array   arguments
-	 * @return mixed
-	 * @throws MemberAccessException
-	 */
 	public function __call($name, $args) {
 		if ($name === 'onSuccess') {
 			$entity = $this->builder->buildEntity($args[0]);

@@ -31,17 +31,14 @@ namespace Vodacek\Form\Builder\Mappers;
 use Vodacek\Form\Builder;
 
 /**
+ * Mapper for numeric values. Supports integer and float values.
+ *
  * @author Ondřej Vodáček <ondrej.vodacek@gmail.com>
  * @copyright 2011, Ondřej Vodáček
  * @license New BSD License
  */
 class NumberMapper extends DefaultMapper {
 
-	/**
-	 * @param \Nette\Forms\Form $form
-	 * @param Builder\Metadata $meta
-	 * @return \Nette\Forms\Controls\BaseControl
-	 */
 	public function addFormControl(\Nette\Forms\Form $form, Builder\Metadata $meta) {
 		$input = $form->addText($meta->name, $meta->label);
 		$input->getControlPrototype()->type('number');
@@ -62,20 +59,10 @@ class NumberMapper extends DefaultMapper {
 		return $input;
 	}
 
-	/**
-	 * @param mixed $value
-	 * @param Builder\Metadata $metadata
-	 * @return mixed
-	 */
 	public function toControlValue($value, Builder\Metadata $metadata) {
 		return strtr($value, ',', '.');
 	}
 
-	/**
-	 * @param \Nette\Forms\Controls\BaseControl $control
-	 * @param Builder\Metadata $metadata
-	 * @return mixed
-	 */
 	public function toPropertyValue(\Nette\Forms\Controls\BaseControl $control, Builder\Metadata $metadata) {
 		$value = $control->getValue();
 		if ($value !== null) {
