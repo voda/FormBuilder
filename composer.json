@@ -1,0 +1,20 @@
+{
+    "name": "voda/FormBuilder",
+    "description": "Tool for automated building Nette forms from entities.",
+    "authors": [
+        {"name": "Ondřej Vodáček", "email": "ondrej.vodacek@gmail.com"}
+    ],
+	"keywords":["Nette", "form"],
+	"license": "BSD-3",
+    "require": {
+		"php": ">=5.3.0",
+		"nette/nette": "2.0.*"
+	},
+	"require-dev": {
+		"doctrine/orm": "2.2.*"
+	},
+	"autoload": {
+		"psr-0": {"Vodacek\\Form\\Builder" : ""}
+	},
+	"target-dir": "Vodacek/Form"
+}
