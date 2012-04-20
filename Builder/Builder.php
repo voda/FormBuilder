@@ -166,9 +166,6 @@ class Builder {
 		$this->mapperContainer->addService('date', function() {
 			return new Mappers\DateMapper();
 		});
-		$this->mapperContainer->addService('id', function() {
-			return new Mappers\IdMapper();
-		});
 		$this->mapperContainer->addService('boolean', function() {
 			return new Mappers\BooleanMapper();
 		});

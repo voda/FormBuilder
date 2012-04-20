@@ -75,9 +75,6 @@ class DoctrineAnnotationLoader extends AnnotationLoader {
 				default:
 					break;
 			}
-			if (isset($map['id']) && $map['id']) {
-				$type = 'id';
-			}
 			if (!isset($map['nullable']) || $map['nullable'] === false && !isset($meta->conditions['required'])) {
 				$meta->conditions['required'] = true;
 			}
