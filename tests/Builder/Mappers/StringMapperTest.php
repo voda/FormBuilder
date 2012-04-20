@@ -52,8 +52,6 @@ class StringMapperTest extends \PHPUnit_Framework_TestCase {
 		$meta->type = 'string';
 		$meta->name = 'var';
 		$meta->label = 'String';
-		$meta->conditions['requiered'] = true;
-		$meta->conditions['minLength'] = 12;
 	}
 
 	public function testAddFormControl() {
@@ -61,12 +59,6 @@ class StringMapperTest extends \PHPUnit_Framework_TestCase {
 				->method('addText')
 				->with('var', 'String')
 				->will($this->returnValue($this->control));
-		$this->control->expects($this->any())
-				->method('setRequiered')
-				->will($this->returnValue($this->control));
-		$this->control->expects($this->any())
-				->method('addRule')
-				->with(\Nette\Forms\Form::MIN_LENGTH, null, 12);
 		$result = $this->object->addFormControl($this->form, $this->metadata);
 		$this->assertSame($this->control, $result);
 	}
