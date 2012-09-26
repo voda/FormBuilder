@@ -76,7 +76,7 @@ class NumberMapper extends DefaultMapper {
 	 * @param Builder\Metadata $metadata
 	 * @return mixed
 	 */
-	public function toPropertyValue(\Nette\Forms\Controls\BaseControl $control, Builder\Metadata $metadata) {
+	public function toPropertyValue(\Nette\Forms\FormControl $control, Builder\Metadata $metadata) {
 		$value = $control->getValue();
 		if ($value !== null) {
 			$value = $metadata->type === 'float' ? (float)$value : (int)$value;
