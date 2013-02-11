@@ -55,6 +55,6 @@ class Metadata {
 	/** @var array list of rules (eg. min, max, ...) */
 	public $conditions = array();
 
-	/** @var array list for custom values (data attributes, selectbox valus, ...) */
+	/** @var array list for custom values (data attributes, selectbox values, ...) */
 	public $custom = array();
 }
