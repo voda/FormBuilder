@@ -5,8 +5,8 @@
         {"name": "Ondřej Vodáček", "email": "ondrej.vodacek@gmail.com"}
     ],
 	"keywords":["Nette", "form"],
-	"license": "BSD-3",
-    "require": {
+	"license": "BSD-3-Clause",
+	"require": {
 		"php": ">=5.3.0",
 		"nette/nette": "2.0.*"
 	},
